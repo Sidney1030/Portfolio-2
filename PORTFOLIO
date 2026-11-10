@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nelisi Tavares Andrelino – Portfolio BTS SIO SLAM</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== 1. COULEURS ET BASE (change les couleurs ici) ===== */
+:root{--bg:#000;--panel:#101012;--ink:#f4f4f5;--mute:#a1a1aa;--line:#26262b;--acc:#7aa2ff;--acc2:#38e0c8;--warm:#ffb86b;--pink:#ff7eb6;--soft:#1b1f2a;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.7 "Manrope","Segoe UI",Arial,sans-serif}
+h1,h2,h3,h4{margin:0;line-height:1.2}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-size:1.9rem;font-weight:800;margin-bottom:8px}
+.sub{color:var(--mute);margin:0 0 32px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+
+/* ===== 2. MENU ===== */
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:6px;overflow-x:auto;padding-top:12px;padding-bottom:12px}
+nav b{margin-right:auto;padding-right:16px;white-space:nowrap}
+nav a{color:var(--mute);text-decoration:none;font-size:.92rem;padding:4px 10px;white-space:nowrap}
+nav a.on{color:var(--acc);font-weight:700}
+
+/* ===== 3. ACCUEIL ===== */
+header{padding:clamp(48px,9vw,96px) 0}
+header .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.tag{display:inline-block;background:var(--soft);color:var(--acc);font-weight:700;font-size:.9rem;padding:4px 14px;border-radius:99px;margin-bottom:18px}
+h1{font-size:clamp(2.3rem,6vw,3.8rem);font-weight:800;letter-spacing:-.03em}
+h1 span{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header p{color:var(--mute);font-size:1.15rem;margin:18px 0 28px;max-width:30em}
+.btn{display:inline-block;padding:12px 22px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#000;border-radius:8px;font-weight:700;text-decoration:none;margin:0 8px 8px 0;transition:transform .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn.alt{background:none;color:var(--ink);border:1px solid var(--line)}
+.code{background:#0a0a0c;border:1px solid var(--line);border-radius:12px;padding:20px 22px;font:.9rem/1.7 ui-monospace,Consolas,monospace;overflow-x:auto;margin:0}
+.code i{color:#8ab4ff;font-style:normal}
+.code em{color:#e9c98a;font-style:normal}
+.cur{display:inline-block;width:8px;height:1em;background:#8ab4ff;vertical-align:-2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ===== 4. COMPETENCES (les animations sont ici) ===== */
+.bar{margin-bottom:18px}
+.bar div{display:flex;justify-content:space-between;margin-bottom:6px}
+.bar .track{height:8px;background:var(--line);border-radius:9px;overflow:hidden}
+.bar .fill{position:relative;height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:9px;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+/* reflet lumineux qui passe sur la barre */
+.bar .fill::after{content:"";position:absolute;top:0;bottom:0;width:40px;left:-40px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);animation:shine 2.8s 1.6s infinite}
+/* une couleur différente par langage */
+.bar:nth-of-type(2) .fill{background:linear-gradient(90deg,#a78bfa,var(--pink))}
+.bar:nth-of-type(3) .fill{background:linear-gradient(90deg,var(--warm),var(--pink))}
+.bar:nth-of-type(4) .fill{background:linear-gradient(90deg,var(--acc2),var(--acc))}
+.bar:nth-of-type(5) .fill{background:linear-gradient(90deg,#ffd86b,var(--warm))}
+.niveau{margin:-8px 0 20px;color:var(--mute);font-size:.93rem}
+.niveau b{color:var(--warm)}
+@keyframes shine{to{left:110%}}
+
+.rings{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;margin-top:28px}
+.ring{text-align:center}
+.ring svg{width:110px;height:110px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:9}
+.ring .bg{stroke:var(--line)}
+.ring .val{stroke:var(--acc2);stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1)}
+.ring .num{margin-top:-72px;height:72px;font-weight:800;font-size:1.3rem}
+.ring p{margin:0;color:var(--mute);font-size:.9rem}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.tags li{background:var(--soft);padding:4px 12px;border-radius:99px;font-size:.9rem;transition:transform .2s,background .2s}
+.tags li:hover{background:var(--acc);color:#000;transform:translateY(-3px)}
+/* les tags apparaissent un par un */
+.js .tags li{opacity:0;transform:scale(.6)}
+.js .in .tags li,.js .tags.in li{opacity:1;transform:none;transition:opacity .4s,transform .4s cubic-bezier(.3,1.6,.5,1)}
+
+.qualites{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:28px}
+.qualites .card{transition:transform .25s,border-color .25s}
+.qualites .card:hover{transform:translateY(-5px);border-color:var(--acc)}
+.qualites h4{margin-bottom:4px}
+.qualites .card:nth-child(1){border-top:3px solid var(--acc)}
+.qualites .card:nth-child(2){border-top:3px solid var(--acc2)}
+.qualites .card:nth-child(3){border-top:3px solid var(--warm)}
+.qualites .card:nth-child(4){border-top:3px solid var(--pink)}
+.qualites p{margin:0;color:var(--mute);font-size:.93rem}
+
+/* ===== 5. CV, ALTERNANCE, PROJETS, VEILLE, CONTACT ===== */
+.tl{list-style:none;margin:0 0 30px;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.tl li{position:relative;padding-bottom:22px}
+.tl li::before{content:"";position:absolute;left:-29px;top:.45em;width:12px;height:12px;border-radius:50%;background:var(--acc2)}
+.tl time{font-size:.88rem;color:var(--mute)}
+.tl h4{margin:2px 0}
+.tl p,.blk+p{margin:0;color:var(--mute)}
+h3.blk{margin-bottom:16px}
+.card h4{margin:16px 0 4px}
+.card h3+h4{margin-top:12px}
+.card p{margin:0;color:var(--mute)}
+.card ul.list{margin:14px 0 0;padding-left:1.2em}
+.card ul.list li{margin-bottom:6px}
+.filters{display:flex;gap:8px;margin-bottom:22px}
+.filters button{font:inherit;padding:7px 18px;border-radius:99px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer}
+.filters button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#000}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.proj{transition:transform .25s,border-color .25s}
+.proj:hover{transform:translateY(-5px);border-color:var(--acc)}
+.proj[hidden]{display:none}
+.proj h3{margin:14px 0 6px}
+.proj p{margin:0 0 12px}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.contact h4{color:var(--mute);font-weight:500;font-size:.9rem;margin:0 0 4px}
+.contact a,.contact p{font-weight:700;color:var(--ink);word-break:break-word}
+.contact a{color:var(--acc)}
+footer{padding:30px 0 40px;border-top:1px solid var(--line);color:var(--mute);font-size:.9rem;text-align:center}
+
+/* ===== 6. APPARITION AU SCROLL ===== */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:760px){header .wrap,.grid2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal,.js .tags li{opacity:1;transform:none}}
+</style>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <b>Nelisi T. A.</b>
+  <a href="#about">Présentation</a><a href="#competences">Compétences</a><a href="#cv">CV</a>
+  <a href="#alternance">Alternance</a><a href="#projets">Projets</a><a href="#veille">Veille</a><a href="#contact">Contact</a>
+</div></nav>
+
+<header><div class="wrap">
+  <div>
+    <span class="tag">BTS SIO · Option SLAM</span>
+    <h1>Nelisi <span>Tavares Andrelino</span></h1>
+    <p>Étudiant en développement, je crée des applications web et logicielles, de l’analyse du besoin jusqu’aux tests.</p>
+    <a class="btn" href="#projets">Voir mes projets</a><a class="btn alt" href="#contact">Me contacter</a>
+  </div>
+  <pre class="code" aria-label="Résumé de profil"><i>const</i> profil = {
+  prenom: <em>"Nelisi"</em>,
+  formation: <em>"BTS SIO SLAM"</em>,
+  interets: [<em>"Web"</em>, <em>"Logiciel"</em>,
+             <em>"Sécurité"</em>],
+  recherche: <em>"Alternance"</em>
+};<span class="cur"></span></pre>
+</div></header>
+
+<main>
+
+<section id="about"><div class="wrap">
+  <h2 class="reveal">Présentation</h2>
+  <p class="sub reveal">Qui je suis et ce que je sais faire.</p>
+  <div class="reveal">
+    <p>Je prépare le BTS Services Informatiques aux Organisations, option Solutions Logicielles et Applications Métiers. J’aime transformer un besoin en application qui fonctionne : analyser, modéliser, coder, tester et corriger.</p>
+    <p>Pendant ma formation, j’ai travaillé sur des applications web, des bases de données et des logiciels de bureau. Je recherche une alternance pour poursuivre en [licence pro / école d’ingénieurs].</p>
+  </div>
+</div></section>
+
+<section id="competences"><div class="wrap">
+  <h2 class="reveal">Compétences</h2>
+  <p class="sub reveal">Les langages et outils que j’utilise en cours et en projet.</p>
+  <div class="grid2">
+    <div class="card reveal" id="bars">
+      <h3 style="margin-bottom:18px">Langages</h3>
+      <p class="niveau">Niveau <b>débutant</b> : je progresse avec les cours et mes projets.</p>
+      <!-- data-niveau = pourcentage. Modifie les chiffres ici -->
+      <div class="bar" data-niveau="55"><div>HTML / CSS <b class="pct">0%</b></div><span class="track"><span class="fill"></span></span></div>
+      <div class="bar" data-niveau="35"><div>PHP <b class="pct">0%</b></div><span class="track"><span class="fill"></span></span></div>
+      <div class="bar" data-niveau="35"><div>Java <b class="pct">0%</b></div><span class="track"><span class="fill"></span></span></div>
+      <div class="bar" data-niveau="40"><div>SQL / MySQL <b class="pct">0%</b></div><span class="track"><span class="fill"></span></span></div>
+      <div class="bar" data-niveau="30"><div>JavaScript <b class="pct">0%</b></div><span class="track"><span class="fill"></span></span></div>
+    </div>
+    <div class="reveal">
+      <h3 style="margin-bottom:16px">Outils</h3>
+      <ul class="tags"><li>HTML5</li><li>CSS3</li><li>PHP</li><li>Java</li><li>SQL</li><li>Git</li></ul>
+      <div class="rings" id="rings">
+        <!-- data-niveau = pourcentage de l’anneau -->
+        <div class="ring" data-niveau="40"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/><circle class="val" cx="50" cy="50" r="45"/></svg><div class="num">0%</div><p>Git</p></div>
+        <div class="ring" data-niveau="45"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/><circle class="val" cx="50" cy="50" r="45"/></svg><div class="num">0%</div><p>Modélisation</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="qualites">
+    <div class="card reveal"><h4>Curiosité</h4><p>J’apprends vite de nouvelles technologies.</p></div>
+    <div class="card reveal"><h4>Rigueur</h4><p>Je teste et je corrige mon code.</p></div>
+    <div class="card reveal"><h4>Autonomie</h4><p>Je cherche seul avant de demander.</p></div>
+    <div class="card reveal"><h4>Esprit d’équipe</h4><p>Je travaille en groupe avec Git.</p></div>
+  </div>
+</div></section>
+
+<section id="cv"><div class="wrap">
+  <h2 class="reveal">Mon CV</h2>
+  <p class="sub reveal">Formation, expérience et langues.</p>
+  <div class="grid2">
+    <div class="reveal">
+      <h3 class="blk">Formation</h3>
+      <ul class="tl">
+        <li><time>[2025 – 2027]</time><h4>BTS SIO option SLAM</h4><p>ESTIAM, Paris</p></li>
+        <li><time>[2022 – 2025]</time><h4>Baccalauréat [série]</h4><p>Lycée Pierre de Coubertin, Meaux · Sans mention</p></li>
+      </ul>
+      <h3 class="blk">Expériences</h3>
+      <ul class="tl">
+        <li><time>[Dates]</time><h4>[Poste ou job étudiant]</h4><p>[Entreprise], [ville]</p></li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <h3 class="blk">Langues</h3>
+      <p style="margin:0 0 30px;color:var(--mute)">Français : langue maternelle<br>Anglais : intermédiaire</p>
+      <a class="btn" href="#">Télécharger mon CV (PDF)</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="alternance"><div class="wrap">
+  <h2 class="reveal">Ma recherche d’alternance</h2>
+  <p class="sub reveal">Je souhaite continuer ma formation en alliant études et expérience en entreprise.</p>
+  <div class="grid2">
+    <div class="card reveal">
+      <h3>Ce que je recherche</h3>
+      <h4>Poste</h4><p>Alternant développeur d’applications web et logicielles</p>
+      <h4>Formation visée</h4><p>Licence pro ou Bachelor en développement informatique</p>
+      <h4>Rythme</h4><p>Selon l’école, par exemple 3 jours en entreprise et 2 jours en cours</p>
+      <h4>Disponibilité</h4><p>À la rentrée qui suit l’obtention de mon BTS</p>
+      <h4>Zone géographique</h4><p>Meaux et Île-de-France</p>
+    </div>
+    <div class="card reveal">
+      <h3>Ce que j’apporte</h3>
+      <ul class="list">
+        <li>Des bases solides en développement web et logiciel</li>
+        <li>La maîtrise de la conception d’une base de données</li>
+        <li>Le travail en équipe avec Git</li>
+        <li>L’envie d’apprendre vite de nouvelles technologies</li>
+      </ul>
+      <p style="margin-top:22px"><a class="btn" href="#contact">Me proposer une offre</a></p>
+    </div>
+  </div>
+</div></section>
+
+<section id="projets"><div class="wrap">
+  <h2 class="reveal">Mes projets</h2>
+  <p class="sub reveal">Réalisés en cours, en équipe ou à titre personnel.</p>
+  <div class="filters reveal" role="group" aria-label="Filtrer les projets">
+    <button data-f="all" aria-pressed="true">Tous</button>
+    <button data-f="web" aria-pressed="false">Web</button>
+    <button data-f="logiciel" aria-pressed="false">Logiciel</button>
+  </div>
+  <div class="projects reveal">
+    <article class="card proj" data-type="web">
+      <ul class="tags"><li>PHP</li><li>MySQL</li><li>CSS</li></ul>
+      <h3>[Projet 1 : site web]</h3><p>[Décris en deux phrases le besoin et ta part du travail.]</p><a href="#">Voir le code</a>
+    </article>
+    <article class="card proj" data-type="logiciel">
+      <ul class="tags"><li>Java</li><li>SQL</li><li>Git</li></ul>
+      <h3>[Projet 2 : application de bureau]</h3><p>[Décris en deux phrases le besoin et ta part du travail.]</p><a href="#">Voir le code</a>
+    </article>
+    <article class="card proj" data-type="logiciel">
+      <ul class="tags"><li>[Techno]</li><li>[Techno]</li></ul>
+      <h3>[Projet 3]</h3><p>[Décris en deux phrases le besoin et ta part du travail.]</p><a href="#">Voir le code</a>
+    </article>
+  </div>
+</div></section>
+
+<section id="veille"><div class="wrap">
+  <h2 class="reveal">Ma veille technologique</h2>
+  <p class="sub reveal">Je surveille régulièrement l’actualité du numérique pour rester à jour.</p>
+  <div class="card reveal" style="margin-bottom:20px">
+    <h3>Thème : L’intelligence artificielle dans le développement logiciel</h3>
+    <p style="margin-top:8px">Les assistants de programmation à base d’IA changent la façon dont on écrit, teste et relit du code. Comme futur développeur, je veux comprendre ce qu’ils apportent et à quoi faire attention.</p>
+  </div>
+  <div class="grid2" style="gap:20px;margin-bottom:20px">
+    <div class="card reveal"><h4 style="margin-top:0">Le contexte</h4><p>Des outils comme GitHub Copilot ou ChatGPT proposent du code, expliquent des erreurs et aident à écrire des tests. Ils sont de plus en plus utilisés dans les équipes de développement et dans les écoles.</p></div>
+    <div class="card reveal"><h4 style="margin-top:0">Les enjeux</h4><p>Ces outils font gagner du temps, mais le code proposé peut être faux ou peu sécurisé, et les données confidentielles envoyées à l’outil posent un risque. Le RGPD et le règlement européen sur l’IA encadrent ces usages. Le développeur reste responsable de ce qu’il livre.</p></div>
+  </div>
+  <h4 class="reveal" style="margin-bottom:10px">Mes sources</h4>
+  <ul class="tags reveal"><li>Google Alertes</li><li>Le Monde Informatique</li><li>Developpez.com</li><li>ANSSI</li><li>CNIL</li></ul>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2 class="reveal">Me contacter</h2>
+  <p class="sub reveal">Pour une alternance, une opportunité ou simplement échanger.</p>
+  <div class="contact">
+    <div class="card reveal"><h4>Email</h4><a href="mailto:nelisitavares@gmail.com">nelisitavares@gmail.com</a></div>
+    <div class="card reveal"><h4>Téléphone</h4><a href="tel:+33766822473">07 66 82 24 73</a></div>
+    <div class="card reveal"><h4>Localisation</h4><p>Meaux, France</p></div>
+    <div class="card reveal"><h4>Réseaux</h4><p><a href="https://github.com/">GitHub</a> · <a href="https://www.linkedin.com/in/">LinkedIn</a></p></div>
+  </div>
+</div></section>
+
+</main>
+<footer><div class="wrap">© 2026 Nelisi Tavares Andrelino · BTS SIO option SLAM</div></footer>
+
+<script>
+/* ===== A. Fait apparaître les blocs quand on scrolle ===== */
+const vu = new IntersectionObserver((liste) => {
+  liste.forEach((e) => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("in");
+    vu.unobserve(e.target);
+    if (e.target.id === "bars") animerBarres();
+    if (e.target.id === "rings") animerAnneaux();
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll(".reveal, .tags, #rings").forEach((el) => vu.observe(el));
+
+/* Les tags d’un même groupe arrivent l’un après l’autre */
+document.querySelectorAll(".tags").forEach((ul) => {
+  ul.querySelectorAll("li").forEach((li, i) => (li.style.transitionDelay = i * 90 + "ms"));
+});
+
+/* ===== B. Compteur : fait monter un nombre de 0 à la valeur ===== */
+function compter(el, cible, duree) {
+  const debut = performance.now();
+  function pas(maintenant) {
+    const t = Math.min((maintenant - debut) / duree, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.round(cible * ease) + "%";
+    if (t < 1) requestAnimationFrame(pas);
+  }
+  requestAnimationFrame(pas);
+}
+
+/* ===== C. Barres de compétences ===== */
+function animerBarres() {
+  document.querySelectorAll(".bar").forEach((barre, i) => {
+    const niveau = Number(barre.dataset.niveau);
+    setTimeout(() => {
+      barre.querySelector(".fill").style.width = niveau + "%";
+      compter(barre.querySelector(".pct"), niveau, 1400);
+    }, i * 150);
+  });
+}
+
+/* ===== D. Anneaux (le cercle fait 283 de long, voir le CSS) ===== */
+function animerAnneaux() {
+  document.querySelectorAll(".ring").forEach((anneau) => {
+    const niveau = Number(anneau.dataset.niveau);
+    anneau.querySelector(".val").style.strokeDashoffset = 283 - (283 * niveau) / 100;
+    compter(anneau.querySelector(".num"), niveau, 1600);
+  });
+}
+
+/* ===== E. Filtre des projets ===== */
+const boutons = document.querySelectorAll(".filters button");
+boutons.forEach((b) => b.addEventListener("click", () => {
+  boutons.forEach((x) => x.setAttribute("aria-pressed", x === b));
+  document.querySelectorAll(".proj").forEach((p) => {
+    p.hidden = b.dataset.f !== "all" && p.dataset.type !== b.dataset.f;
+  });
+}));
+
+/* ===== F. Surligne le lien du menu de la section visible ===== */
+const liens = document.querySelectorAll("nav a");
+const menu = new IntersectionObserver((liste) => {
+  liste.forEach((e) => {
+    if (e.isIntersecting) liens.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+document.querySelectorAll("section[id]").forEach((s) => menu.observe(s));
+</script>
+</body>
+</html>
