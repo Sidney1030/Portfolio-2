@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 /* ===== 1. COULEURS ET BASE (change les couleurs ici) ===== */
-:root{--bg:#000;--panel:#101012;--ink:#f4f4f5;--mute:#a1a1aa;--line:#26262b;--acc:#7aa2ff;--acc2:#38e0c8;--warm:#ffb86b;--pink:#ff7eb6;--soft:#1b1f2a;color-scheme:dark}
+:root{--bg:#faf7ff;--panel:#ffffff;--ink:#1c1a24;--mute:#5b5668;--line:#e4dcf2;--acc:#7c3aed;--acc2:#db2777;--warm:#d97706;--pink:#e11d48;--soft:#efe8fb;color-scheme:light}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:60px}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.7 "Manrope","Segoe UI",Arial,sans-serif}
@@ -35,13 +35,13 @@ header .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:c
 h1{font-size:clamp(2.3rem,6vw,3.8rem);font-weight:800;letter-spacing:-.03em}
 h1 span{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
 header p{color:var(--mute);font-size:1.15rem;margin:18px 0 28px;max-width:30em}
-.btn{display:inline-block;padding:12px 22px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#000;border-radius:8px;font-weight:700;text-decoration:none;margin:0 8px 8px 0;transition:transform .25s}
+.btn{display:inline-block;padding:12px 22px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:8px;font-weight:700;text-decoration:none;margin:0 8px 8px 0;transition:transform .25s}
 .btn:hover{transform:translateY(-3px)}
 .btn.alt{background:none;color:var(--ink);border:1px solid var(--line)}
-.code{background:#0a0a0c;border:1px solid var(--line);border-radius:12px;padding:20px 22px;font:.9rem/1.7 ui-monospace,Consolas,monospace;overflow-x:auto;margin:0}
-.code i{color:#8ab4ff;font-style:normal}
+.code{color:#e4e4e7;background:#0d0a14;border:1px solid var(--line);border-radius:12px;padding:20px 22px;font:.9rem/1.7 ui-monospace,Consolas,monospace;overflow-x:auto;margin:0}
+.code i{color:#c4a8ff;font-style:normal}
 .code em{color:#e9c98a;font-style:normal}
-.cur{display:inline-block;width:8px;height:1em;background:#8ab4ff;vertical-align:-2px;animation:blink 1s steps(2) infinite}
+.cur{display:inline-block;width:8px;height:1em;background:#c4a8ff;vertical-align:-2px;animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
 
 /* ===== 4. COMPETENCES (les animations sont ici) ===== */
@@ -71,7 +71,8 @@ header p{color:var(--mute);font-size:1.15rem;margin:18px 0 28px;max-width:30em}
 
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .tags li{background:var(--soft);padding:4px 12px;border-radius:99px;font-size:.9rem;transition:transform .2s,background .2s}
-.tags li:hover{background:var(--acc);color:#000;transform:translateY(-3px)}
+.tags li:hover{background:var(--acc);color:#fff;transform:translateY(-3px)}
+.tags li a{color:inherit;text-decoration:none}
 /* les tags apparaissent un par un */
 .js .tags li{opacity:0;transform:scale(.6)}
 .js .in .tags li,.js .tags.in li{opacity:1;transform:none;transition:opacity .4s,transform .4s cubic-bezier(.3,1.6,.5,1)}
@@ -101,17 +102,18 @@ h3.blk{margin-bottom:16px}
 .card ul.list li{margin-bottom:6px}
 .filters{display:flex;gap:8px;margin-bottom:22px}
 .filters button{font:inherit;padding:7px 18px;border-radius:99px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer}
-.filters button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#000}
+.filters button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff}
 .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 .proj{transition:transform .25s,border-color .25s}
 .proj:hover{transform:translateY(-5px);border-color:var(--acc)}
 .proj[hidden]{display:none}
 .proj h3{margin:14px 0 6px}
 .proj p{margin:0 0 12px}
-.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .contact h4{color:var(--mute);font-weight:500;font-size:.9rem;margin:0 0 4px}
 .contact a,.contact p{font-weight:700;color:var(--ink);word-break:break-word}
 .contact a{color:var(--acc)}
+.contact a[href^="mailto"]{white-space:nowrap;font-size:.95rem}
 footer{padding:30px 0 40px;border-top:1px solid var(--line);color:var(--mute);font-size:.9rem;text-align:center}
 
 /* ===== 6. APPARITION AU SCROLL ===== */
@@ -119,6 +121,7 @@ footer{padding:30px 0 40px;border-top:1px solid var(--line);color:var(--mute);fo
 .js .reveal.in{opacity:1;transform:none}
 
 @media (max-width:760px){header .wrap,.grid2{grid-template-columns:1fr}}
+@media (max-width:400px){.contact a[href^="mailto"]{font-size:.85rem}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal,.js .tags li{opacity:1;transform:none}}
 </style>
 <script>document.documentElement.classList.add("js")</script>
@@ -197,18 +200,19 @@ footer{padding:30px 0 40px;border-top:1px solid var(--line);color:var(--mute);fo
     <div class="reveal">
       <h3 class="blk">Formation</h3>
       <ul class="tl">
-        <li><time>[2025 – 2027]</time><h4>BTS SIO option SLAM</h4><p>ESTIAM, Paris</p></li>
-        <li><time>[2022 – 2025]</time><h4>Baccalauréat [série]</h4><p>Lycée Pierre de Coubertin, Meaux · Sans mention</p></li>
+        <li><time>2025 – 2027</time><h4>BTS SIO option SLAM</h4><p>ESTIAM, Paris</p></li>
+        <li><time>2022 – 2024</time><h4>Bac Pro MELEC</h4><p>Lycée Pierre de Coubertin, Meaux</p></li>
       </ul>
       <h3 class="blk">Expériences</h3>
       <ul class="tl">
-        <li><time>[Dates]</time><h4>[Poste ou job étudiant]</h4><p>[Entreprise], [ville]</p></li>
+        <li><time>Novembre 2024 – Juin 2025</time><h4>Stage électricien</h4><p>PROXISERVE, Stains · Préparation du matériel, tirage de câbles, installation de prises et d’interrupteurs, remplacement de fusible</p></li>
+        <li><time>Janvier 2024 – Juin 2024</time><h4>Stage électricien</h4><p>BTB GES, Chessy · Tirage de câbles, test d’installation au multimètre, vérification des disjoncteurs, repérage sur un tableau électrique</p></li>
       </ul>
     </div>
     <div class="reveal">
       <h3 class="blk">Langues</h3>
-      <p style="margin:0 0 30px;color:var(--mute)">Français : langue maternelle<br>Anglais : intermédiaire</p>
-      <a class="btn" href="#">Télécharger mon CV (PDF)</a>
+      <p style="margin:0 0 30px;color:var(--mute)">Français : langue maternelle<br>Anglais : niveau B1<br>Espagnol : niveau B1</p>
+      <a class="btn" href="CV-Nelisi-Tavares-Andrelino.pdf" target="_blank" rel="noopener">Télécharger mon CV (PDF)</a>
     </div>
   </div>
 </div></section>
@@ -221,7 +225,7 @@ footer{padding:30px 0 40px;border-top:1px solid var(--line);color:var(--mute);fo
       <h3>Ce que je recherche</h3>
       <h4>Poste</h4><p>Alternant développeur d’applications web et logicielles</p>
       <h4>Formation visée</h4><p>Licence pro ou Bachelor en développement informatique</p>
-      <h4>Rythme</h4><p>Selon l’école, par exemple 3 jours en entreprise et 2 jours en cours</p>
+      <h4>Rythme</h4><p>4 jours par semaine en entreprise</p>
       <h4>Disponibilité</h4><p>À la rentrée qui suit l’obtention de mon BTS</p>
       <h4>Zone géographique</h4><p>Meaux et Île-de-France</p>
     </div>
@@ -248,16 +252,12 @@ footer{padding:30px 0 40px;border-top:1px solid var(--line);color:var(--mute);fo
   </div>
   <div class="projects reveal">
     <article class="card proj" data-type="web">
-      <ul class="tags"><li>PHP</li><li>MySQL</li><li>CSS</li></ul>
-      <h3>[Projet 1 : site web]</h3><p>[Décris en deux phrases le besoin et ta part du travail.]</p><a href="#">Voir le code</a>
-    </article>
-    <article class="card proj" data-type="logiciel">
-      <ul class="tags"><li>Java</li><li>SQL</li><li>Git</li></ul>
-      <h3>[Projet 2 : application de bureau]</h3><p>[Décris en deux phrases le besoin et ta part du travail.]</p><a href="#">Voir le code</a>
+      <ul class="tags"><li>HTML</li><li>CSS</li></ul>
+      <h3>Site de ticketing</h3><p>Site web de ticketing réalisé en HTML et CSS. [Précise le besoin et ta part du travail.]</p><a href="#">Voir le code</a>
     </article>
     <article class="card proj" data-type="logiciel">
       <ul class="tags"><li>[Techno]</li><li>[Techno]</li></ul>
-      <h3>[Projet 3]</h3><p>[Décris en deux phrases le besoin et ta part du travail.]</p><a href="#">Voir le code</a>
+      <h3>[Projet 2 : application]</h3><p>[Décris en deux phrases le besoin et ta part du travail.]</p><a href="#">Voir le code</a>
     </article>
   </div>
 </div></section>
@@ -274,7 +274,7 @@ footer{padding:30px 0 40px;border-top:1px solid var(--line);color:var(--mute);fo
     <div class="card reveal"><h4 style="margin-top:0">Les enjeux</h4><p>Ces outils font gagner du temps, mais le code proposé peut être faux ou peu sécurisé, et les données confidentielles envoyées à l’outil posent un risque. Le RGPD et le règlement européen sur l’IA encadrent ces usages. Le développeur reste responsable de ce qu’il livre.</p></div>
   </div>
   <h4 class="reveal" style="margin-bottom:10px">Mes sources</h4>
-  <ul class="tags reveal"><li>Google Alertes</li><li>Le Monde Informatique</li><li>Developpez.com</li><li>ANSSI</li><li>CNIL</li></ul>
+  <ul class="tags reveal"><li><a href="https://www.lemondeinformatique.fr/" target="_blank" rel="noopener">Le Monde Informatique</a></li><li><a href="https://www.developpez.com/" target="_blank" rel="noopener">Developpez.com</a></li><li><a href="https://cyber.gouv.fr/" target="_blank" rel="noopener">ANSSI</a></li><li><a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a></li></ul>
 </div></section>
 
 <section id="contact"><div class="wrap">
@@ -284,7 +284,7 @@ footer{padding:30px 0 40px;border-top:1px solid var(--line);color:var(--mute);fo
     <div class="card reveal"><h4>Email</h4><a href="mailto:nelisitavares@gmail.com">nelisitavares@gmail.com</a></div>
     <div class="card reveal"><h4>Téléphone</h4><a href="tel:+33766822473">07 66 82 24 73</a></div>
     <div class="card reveal"><h4>Localisation</h4><p>Meaux, France</p></div>
-    <div class="card reveal"><h4>Réseaux</h4><p><a href="https://github.com/">GitHub</a> · <a href="https://www.linkedin.com/in/">LinkedIn</a></p></div>
+    <div class="card reveal"><h4>Réseaux</h4><p><a href="https://github.com/">GitHub</a> · <a href="https://www.linkedin.com/in/nelisi-sidney-tavares-andrelino-ture-854333404/">LinkedIn</a></p></div>
   </div>
 </div></section>
 
